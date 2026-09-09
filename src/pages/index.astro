@@ -1,0 +1,209 @@
+---
+import '../styles/global.css';
+
+const services = [
+  {
+    number: '01',
+    title: 'HIV Prevention',
+    text: 'Access PrEP and PEP with a team that helps you reduce risk and make a clear plan for what comes next.',
+    image: '/assets/service-prevention.webp',
+    alt: '',
+    href: 'https://wellviewcare.org/services/prep',
+  },
+  {
+    number: '02',
+    title: 'STI / STD Testing',
+    text: 'Confidential rapid tests and labs for HIV, HCV, chlamydia, gonorrhea, syphilis, and more—with expedited results.',
+    image: '/assets/service-testing.webp',
+    alt: '',
+    href: 'https://wellviewcare.org/services/sti',
+  },
+  {
+    number: '03',
+    title: 'STI / STD Treatment',
+    text: 'Personalized treatment plans, practical education, and compassionate support from testing through follow-up.',
+    image: '/assets/service-treatment.webp',
+    alt: '',
+    href: 'https://wellviewcare.org/services/hiv',
+  },
+];
+
+const locations = [
+  { city: 'Fort Lauderdale', address: '906 W Sunrise Blvd Suite A, Fort Lauderdale, FL 33311', phone: '844-650-2626', tel: '+18446502626', email: 'office@wellviewcare.org' },
+  { city: 'Fort Pierce', address: '2708 S US Hwy 1, Fort Pierce, FL 34982', phone: '772-310-4250', tel: '+17723104250', email: 'office.fp@wellviewcare.org' },
+  { city: 'Jacksonville', address: '1128 N Laura St, Jacksonville, FL 32206', phone: '904-867-7968', tel: '+19048677968', email: 'office.jax@wellviewcare.org' },
+  { city: 'Riviera Beach', address: '3514 Broadway, Riviera Beach, FL 33403', phone: '561-821-4345', tel: '+15618214345', email: 'office.rv@wellviewcare.org' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Confidential HIV, HCV, and STI testing, prevention, and treatment from WellView Care across Florida." />
+    <meta name="theme-color" content="#071b2f" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>WellView Care | Confidential Testing & Treatment in Florida</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to main content</a>
+
+    <header class="site-header" aria-label="Primary navigation">
+      <a class="brand" href="#top" aria-label="WellView Care home">
+        <img src="/assets/wellview-logo.webp" width="154" height="57" alt="WellView Care" />
+      </a>
+      <nav class="desktop-nav" aria-label="Main menu">
+        <a href="#services">Services</a>
+        <a href="#process">Our process</a>
+        <a href="#about">About</a>
+        <a href="#locations">Locations</a>
+      </nav>
+      <a class="button button-small" href="https://wellviewcare.org/appointment">Book an appointment</a>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation"><span></span><span></span></summary>
+        <nav aria-label="Mobile menu">
+          <a href="#services">Services</a><a href="#process">Our process</a><a href="#about">About</a><a href="#locations">Locations</a>
+          <a href="https://wellviewcare.org/appointment">Book an appointment</a>
+        </nav>
+      </details>
+    </header>
+
+    <main id="main">
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img src="/assets/clinic-lab.webp" width="320" height="286" alt="" fetchpriority="high" />
+        </div>
+        <div class="hero-orbit orbit-one"></div>
+        <div class="hero-orbit orbit-two"></div>
+        <div class="hero-content">
+          <p class="eyebrow">Confidential care · Florida</p>
+          <h1 id="hero-title">CARE<br /><span>WITHOUT</span><br />JUDGMENT.</h1>
+          <p class="hero-copy">Fast, private HIV, HCV, and STI testing, prevention, and treatment—whether or not you have insurance.</p>
+          <div class="hero-actions">
+            <a class="button" href="https://wellviewcare.org/appointment">Book an appointment <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#services">Explore our care <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="hero-note" aria-hidden="true"><span>501(c)(3)</span> nonprofit care</div>
+      </section>
+
+      <section class="intro section-pad" aria-labelledby="intro-title">
+        <div class="section-label"><span>What we believe</span><span>01</span></div>
+        <div class="intro-grid">
+          <h2 id="intro-title">Your health deserves clarity, privacy, and a team on your side.</h2>
+          <div class="intro-copy">
+            <p>WellView Care makes quality sexual health care accessible across Florida. We pair confidential testing with clear answers and a treatment plan made for you.</p>
+            <a class="arrow-link" href="https://wellviewcare.org/about">Meet WellView Care <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="services section-pad" id="services" aria-labelledby="services-title">
+        <div class="section-label light"><span>Holistic support</span><span>02</span></div>
+        <div class="section-heading-row">
+          <h2 id="services-title">Care that meets<br />you where you are.</h2>
+          <p>From prevention to treatment, every service begins with a private conversation and a practical next step.</p>
+        </div>
+        <div class="service-list">
+          {services.map((service) => (
+            <article class="service-card">
+              <div class="service-image">
+                <img src={service.image} alt={service.alt} loading="lazy" decoding="async" />
+              </div>
+              <span class="service-number">{service.number}</span>
+              <div class="service-content">
+                <h3>{service.title}</h3>
+                <p>{service.text}</p>
+              </div>
+              <a href={service.href} aria-label={`Learn more about ${service.title}`}><span aria-hidden="true">↗</span></a>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="treatments" aria-labelledby="treatment-title">
+        <div class="treatment-visual">
+          <img src="/assets/about-wellview.webp" width="380" height="380" alt="Medical illustration of a liver supported by gloved hands" loading="lazy" decoding="async" />
+          <div class="color-dot dot-a"></div><div class="color-dot dot-b"></div><div class="color-dot dot-c"></div>
+        </div>
+        <div class="treatment-copy">
+          <p class="eyebrow dark">Personalized treatment</p>
+          <h2 id="treatment-title">Tested.<br />Treated.<br /><span>Supported.</span></h2>
+          <p>Rapid testing can give you answers in as little as 30 minutes. If treatment is needed, our team builds a personal care plan and helps you understand every step.</p>
+          <div class="treatment-facts" aria-label="Treatment highlights">
+            <div><strong>30 min</strong><span>Rapid test results</span></div>
+            <div><strong>98%</strong><span>HCV cure rate with EPCLUSA®</span></div>
+          </div>
+          <a class="button button-dark" href="https://wellviewcare.org/contact">Talk with our team</a>
+        </div>
+      </section>
+
+      <section class="process section-pad" id="process" aria-labelledby="process-title">
+        <div class="section-label"><span>What to expect</span><span>03</span></div>
+        <div class="process-grid">
+          <div>
+            <p class="eyebrow dark">Three steps to care</p>
+            <h2 id="process-title">A clear path forward.</h2>
+          </div>
+          <ol class="steps">
+            <li><span>01</span><div><h3>Coverage check</h3><p>Insurance is not required. We start by confirming coverage and explaining your options.</p></div></li>
+            <li><span>02</span><div><h3>Financial support</h3><p>As a nonprofit, we help eligible patients apply for financial assistance.</p></div></li>
+            <li><span>03</span><div><h3>Tailored treatment</h3><p>After testing, you receive a personal plan, practical education, and ongoing support.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="about section-pad" id="about" aria-labelledby="about-title">
+        <div class="about-word" aria-hidden="true">WELL</div>
+        <div class="about-inner">
+          <p class="eyebrow">About WellView Care</p>
+          <h2 id="about-title">Quality care should be within everyone's reach.</h2>
+          <div class="about-columns">
+            <p>We serve communities across Florida with fast, accurate testing and compassionate treatment—regardless of insurance status.</p>
+            <ul>
+              <li>Confidential rapid tests and labs</li>
+              <li>Education and counseling with clear takeaways</li>
+              <li>Anonymous partner notifications</li>
+              <li>PrEP and PEP prevention options</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="locations section-pad" id="locations" aria-labelledby="locations-title">
+        <div class="section-label"><span>Find your clinic</span><span>04</span></div>
+        <div class="section-heading-row locations-heading">
+          <h2 id="locations-title">Care across<br />Florida.</h2>
+          <a class="phone-callout" href="tel:+18665025545"><span>Central line</span><strong>866-502-5545</strong></a>
+        </div>
+        <div class="location-grid">
+          {locations.map((location, index) => (
+            <article class="location-card">
+              <span>0{index + 1}</span>
+              <h3>{location.city}</h3>
+              <address>{location.address}</address>
+              <div><a href={`tel:${location.tel}`}>{location.phone}</a><a href={`mailto:${location.email}`}>{location.email}</a></div>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <section class="final-cta" aria-labelledby="cta-title">
+        <div class="cta-mark" aria-hidden="true"></div>
+        <p class="eyebrow">Take the next step</p>
+        <h2 id="cta-title">Your care.<br />Your privacy.<br /><span>Your move.</span></h2>
+        <div class="hero-actions centered">
+          <a class="button button-white" href="https://wellviewcare.org/appointment">Book an appointment <span aria-hidden="true">↗</span></a>
+          <a class="text-link" href="https://wellviewcare.org/contact">Contact us</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#top"><img src="/assets/wellview-logo.webp" width="154" height="57" alt="WellView Care" loading="lazy" /></a>
+      <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#locations">Locations</a><a href="https://wellviewcare.org/faq">FAQ</a><a href="https://wellviewcare.org/donate">Donate</a></div>
+      <p>© {new Date().getFullYear()} WellView Care. All rights reserved.</p>
+    </footer>
+  </body>
+</html>
