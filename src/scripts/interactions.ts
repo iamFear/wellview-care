@@ -13,9 +13,11 @@ const splitAnimatedText = (element: HTMLElement, mode: 'words' | 'chars') => {
       const value = node.textContent ?? '';
       const parts = mode === 'chars' ? [...value] : value.split(/(\s+)/);
       const fragment = document.createDocumentFragment();
+      const line = mode === 'chars' ? document.createElement('span') : null;
+      if (line) line.className = 'animated-line';
       parts.forEach((part) => {
         if (!part || /^\s+$/.test(part)) {
-          fragment.append(document.createTextNode(part));
+          (line ?? fragment).append(document.createTextNode(part));
           return;
         }
         const clip = document.createElement('span');
@@ -25,8 +27,9 @@ const splitAnimatedText = (element: HTMLElement, mode: 'words' | 'chars') => {
         content.style.setProperty('--text-order', String(order++));
         content.textContent = part;
         clip.append(content);
-        fragment.append(clip);
+        (line ?? fragment).append(clip);
       });
+      if (line) fragment.append(line);
       node.parentNode?.replaceChild(fragment, node);
       return;
     }

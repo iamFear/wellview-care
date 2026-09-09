@@ -803,15 +803,33 @@ footer > a { padding: .45rem .65rem; background: #fff; }
   transform: translateY(0) rotate(0);
 }
 .hero h1 .char-clip:nth-of-type(3n) .animated-char { transition-duration: 1s; }
+.animated-line { display: inline-block; max-width: 100%; white-space: nowrap; }
+
+@media (min-width: 961px) {
+  .hero h1 {
+    max-width: 42rem;
+    font-size: clamp(4.6rem, 6.35vw, 6.2rem);
+  }
+  .hero-stat-results,
+  .hero-stat-locations {
+    right: auto;
+    left: calc(max(1.5rem, (100vw - var(--max)) / 2) + min(29vw, 22rem));
+  }
+  .hero-stat-results { top: 14.5rem; }
+  .hero-stat-locations { bottom: 15rem; }
+}
 
 @media (max-width: 640px) {
   .hero-content { width: calc(100% - 3rem); }
   .hero h1 {
     max-width: 100%;
-    font-size: clamp(3.15rem, 15.2vw, 4.1rem);
+    font-size: clamp(3.05rem, 14.7vw, 3.95rem);
     letter-spacing: -.082em;
   }
 }
+
+html, body { max-width: 100%; overflow-x: clip; }
+.treatments, .treatments > * { min-width: 0; max-width: 100%; }
 
 @media (prefers-reduced-motion: reduce) {
   .animated-char, .animated-word {
