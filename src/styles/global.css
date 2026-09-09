@@ -184,6 +184,9 @@ footer { padding: 2rem max(1.5rem, calc((100vw - var(--max)) / 2)); color: #eaf6
 footer img { width: 130px; height: auto; opacity: .95; }
 .footer-links { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem 1.5rem; }
 footer p { margin: 0; }
+.footer-meta { display: grid; gap: .3rem; justify-items: end; text-align: right; }
+.footer-meta a { color: #91abb3; font-size: .58rem; }
+.footer-meta a:hover { color: var(--cyan); }
 
 .appointment-page { background: var(--paper); }
 .appointment-header { position: fixed; }
@@ -263,6 +266,7 @@ footer p { margin: 0; }
   .expect-grid { grid-template-columns: 1fr; gap: 3rem; }
   .clinic-call-grid { grid-template-columns: repeat(2, 1fr); }
   footer { grid-template-columns: 1fr; text-align: center; justify-items: center; }
+  .footer-meta { justify-items: center; text-align: center; }
 }
 
 @media (max-width: 640px) {
@@ -300,10 +304,19 @@ footer p { margin: 0; }
   .process h2, .about h2 { font-size: 3.5rem; }
   .steps li { grid-template-columns: 2.5rem 1fr; }
   .about { min-height: auto; }
-  .location-grid { grid-template-columns: 1fr; }
-  .location-card { min-height: 270px; }
-  .locations-heading { gap: 2.5rem; }
-  .phone-callout { justify-self: start; }
+  .locations.section-pad { padding-block: 3.2rem; overflow: hidden; }
+  .locations .section-label { margin-bottom: 2rem; }
+  .locations-heading { gap: 1.25rem; margin-bottom: 1.5rem; }
+  .locations .section-heading-row h2 { max-width: 100%; font-size: clamp(2.45rem, 11vw, 3rem); line-height: .88; overflow-wrap: break-word; }
+  .phone-callout { justify-self: start; padding: .65rem .9rem; }
+  .phone-callout strong { font-size: 1.2rem; }
+  .locations-intro { margin: 0 0 1.5rem; font-size: .84rem; }
+  .location-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .location-card { min-width: 0; min-height: 175px; padding: .75rem; }
+  .location-card h3 { margin: 1rem 0 .4rem; font-size: clamp(1.1rem, 5.1vw, 1.45rem); line-height: .95; overflow-wrap: anywhere; }
+  .location-card address { min-height: 0; font-size: .64rem; line-height: 1.35; }
+  .location-card div { margin-top: .7rem; padding-top: .55rem; display: grid; gap: .25rem; font-size: .58rem; line-height: 1.3; overflow-wrap: anywhere; }
+  .location-card a { min-width: 0; min-height: 24px; display: flex; align-items: center; overflow-wrap: anywhere; }
   .final-cta { min-height: 680px; }
   .final-cta h2 { font-size: clamp(4rem, 18.5vw, 6.2rem); }
   .final-cta .hero-actions { width: 100%; max-width: 340px; }
@@ -609,6 +622,19 @@ footer > a { padding: .45rem .65rem; background: #fff; }
   .service-image { display: none; }
   .intro-copy { border-left: 0; padding-left: 0; }
   .treatment-copy { border-left: 0; }
+  .locations.section-pad { padding-block: 3.2rem; overflow: hidden; }
+  .locations .section-label { margin-bottom: 2rem; }
+  .locations-heading { gap: 1.25rem; margin-bottom: 1.5rem; }
+  .locations .section-heading-row h2 { max-width: 100%; font-size: clamp(2.45rem, 11vw, 3rem); line-height: .88; overflow-wrap: break-word; }
+  .phone-callout { justify-self: start; padding: .65rem .9rem; }
+  .phone-callout strong { font-size: 1.2rem; }
+  .locations-intro { margin: 0 0 1.5rem; font-size: .84rem; }
+  .location-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .location-card { min-width: 0; min-height: 175px; padding: .75rem; }
+  .location-card h3 { margin: 1rem 0 .4rem; font-size: clamp(1.1rem, 5.1vw, 1.45rem); line-height: .95; overflow-wrap: anywhere; }
+  .location-card address { min-height: 0; font-size: .64rem; line-height: 1.35; }
+  .location-card div { margin-top: .7rem; padding-top: .55rem; display: grid; gap: .25rem; font-size: .58rem; line-height: 1.3; overflow-wrap: anywhere; }
+  .location-card a { min-width: 0; overflow-wrap: anywhere; }
   .cta-mark { width: 30rem; height: 30rem; }
   .appointment-hero { padding-top: 7rem; }
   .appointment-intro h1 { font-size: 3.7rem; }
