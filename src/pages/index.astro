@@ -28,6 +28,37 @@ const services = [
   },
 ];
 
+const careGuides = [
+  {
+    label: 'HCV treatment',
+    title: 'How is hepatitis C treated?',
+    text: 'Hepatitis C can spread through blood-to-blood or sexual contact and may cause serious liver damage when it is not treated. After a confidential rapid test—with results available in about 30 minutes—our team creates a personal treatment plan.',
+    fact: 'WellView Care uses EPCLUSA® as its preferred treatment: one pill each day, with a reported 98% cure rate over 12 weeks.',
+    href: 'https://wellviewcare.org/services/hep-c',
+  },
+  {
+    label: 'HIV treatment',
+    title: 'How is HIV treated?',
+    text: 'Without treatment, HIV can progress to AIDS and leave the body less able to fight common infections. After a confidential rapid test, we explain the result and create a personal care plan with you.',
+    fact: 'Support can include BIKTARVY®—WellView Care’s preferred treatment—and anonymous notification of recent contacts.',
+    href: 'https://wellviewcare.org/services/hiv',
+  },
+  {
+    label: 'STI / STD treatment',
+    title: 'How are STIs and STDs treated?',
+    text: 'You can visit because you have symptoms, a recent contact told you about an exposure, or you simply want regular testing. We test for chlamydia, gonorrhea, syphilis, and other common infections.',
+    fact: 'If treatment is needed, you receive counseling, practical education, a personal treatment plan, and continued support.',
+    href: 'https://wellviewcare.org/services/sti',
+  },
+  {
+    label: 'HIV prevention',
+    title: 'How do PrEP and PEP work?',
+    text: 'PrEP is a daily medicine that can lower the chance of getting HIV for people with a higher risk, including through needle sharing or sex without a condom. PEP is for a possible recent exposure.',
+    fact: 'PEP must be started within 72 hours of a possible exposure. Contact the clinic as soon as possible so the team can guide you.',
+    href: 'https://wellviewcare.org/services/prep',
+  },
+];
+
 const locations = [
   { city: 'Fort Lauderdale', address: '906 W Sunrise Blvd Suite A, Fort Lauderdale, FL 33311', phone: '844-650-2626', tel: '+18446502626', email: 'office@wellviewcare.org' },
   { city: 'Fort Pierce', address: '2708 S US Hwy 1, Fort Pierce, FL 34982', phone: '772-310-4250', tel: '+17723104250', email: 'office.fp@wellviewcare.org' },
@@ -77,7 +108,7 @@ const locations = [
         <div class="hero-orbit orbit-one"></div>
         <div class="hero-orbit orbit-two"></div>
         <div class="hero-content">
-          <p class="eyebrow">Private care · Clear answers</p>
+          <p class="eyebrow">Welcome to WellView Care · Southeast Florida’s trusted STD testing and treatment clinic</p>
           <h1 id="hero-title">TESTING.<br /><span>TREATMENT.</span><br />SUPPORT.</h1>
           <p class="hero-copy">Confidential HIV, hepatitis C, and STI care from people who listen. Insurance is not required.</p>
           <div class="hero-actions">
@@ -139,17 +170,36 @@ const locations = [
         </div>
       </section>
 
+      <section class="care-guide section-pad" id="care-guide" aria-labelledby="care-guide-title">
+        <div class="section-label"><span>Understand your care</span><span>03</span></div>
+        <div class="guide-heading">
+          <h2 id="care-guide-title">Clear answers about prevention and treatment.</h2>
+          <p>These are the main conditions and prevention options WellView Care supports. Your care team will explain what applies to you.</p>
+        </div>
+        <div class="guide-grid">
+          {careGuides.map((guide, index) => (
+            <article class="guide-card">
+              <div class="guide-card-top"><span>0{index + 1}</span><p>{guide.label}</p></div>
+              <h3>{guide.title}</h3>
+              <p>{guide.text}</p>
+              <div class="guide-fact"><span aria-hidden="true">✓</span><p>{guide.fact}</p></div>
+              <a href={guide.href}>Learn more about {guide.label} <span aria-hidden="true">↗</span></a>
+            </article>
+          ))}
+        </div>
+      </section>
+
       <section class="process section-pad" id="process" aria-labelledby="process-title">
-        <div class="section-label"><span>What to expect</span><span>03</span></div>
+        <div class="section-label"><span>What to expect</span><span>04</span></div>
         <div class="process-grid">
           <div>
             <p class="eyebrow dark">Three steps to care</p>
             <h2 id="process-title">A clear path forward.</h2>
           </div>
           <ol class="steps">
-            <li><span>01</span><div><h3>Choose a clinic</h3><p>Select the WellView Care location that is easiest for you to visit.</p></div></li>
-            <li><span>02</span><div><h3>Tell us what you need</h3><p>Choose testing, prevention, treatment, or help deciding. Insurance is not required.</p></div></li>
-            <li><span>03</span><div><h3>Meet your care team</h3><p>We explain every step, answer your questions, and create a clear plan with you.</p></div></li>
+            <li><span>01</span><div><h3>Insurance confirmation</h3><p>Health insurance is not required. Before testing or treatment, we check whether you have coverage and explain your options.</p></div></li>
+            <li><span>02</span><div><h3>Financial aid</h3><p>WellView Care is a dedicated 501(c)(3) nonprofit organization. Our team can help you apply for financial assistance.</p></div></li>
+            <li><span>03</span><div><h3>Tailored treatment</h3><p>After thorough testing, we create a personal treatment plan and give you condition-specific education and support.</p></div></li>
           </ol>
         </div>
       </section>
@@ -160,23 +210,26 @@ const locations = [
           <p class="eyebrow">About WellView Care</p>
           <h2 id="about-title">Care you can understand. Support you can trust.</h2>
           <div class="about-columns">
-            <p>WellView Care is a nonprofit clinic serving Florida communities with private testing, prevention, and treatment.</p>
+            <p>WellView Care serves Southeast Florida and makes quality care accessible regardless of insurance status. Our goal is to help every patient understand their health and thrive.</p>
             <ul>
-              <li>Private rapid tests and laboratory testing</li>
-              <li>Clear explanations without medical jargon</li>
-              <li>Help notifying recent partners anonymously</li>
-              <li>PrEP and PEP to help prevent HIV</li>
+              <li>Fast, accurate rapid tests and labs for HIV, HCV, and common STIs / STDs</li>
+              <li>Tailored education, resources, and counseling with useful next steps</li>
+              <li>Anonymous notifications for recent contacts, handled for you</li>
+              <li>HIV prevention with PrEP and PEP</li>
+              <li>Answers to your questions from experienced medical staff</li>
+              <li>Additional support based on your needs</li>
             </ul>
           </div>
         </div>
       </section>
 
       <section class="locations section-pad" id="locations" aria-labelledby="locations-title">
-        <div class="section-label"><span>Find your clinic</span><span>04</span></div>
+        <div class="section-label"><span>Find your clinic</span><span>05</span></div>
         <div class="section-heading-row locations-heading">
           <h2 id="locations-title">Care across<br />Florida.</h2>
           <a class="phone-callout" href="tel:+18665025545"><span>Central line</span><strong>866-502-5545</strong></a>
         </div>
+        <p class="locations-intro">We are committed to providing quality care for the communities we serve throughout Fort Lauderdale, Fort Pierce, Jacksonville, and Riviera Beach.</p>
         <div class="location-grid">
           {locations.map((location, index) => (
             <article class="location-card">
@@ -202,7 +255,7 @@ const locations = [
 
     <footer>
       <a href="#top"><img src="/assets/wellview-logo.webp" width="154" height="57" alt="WellView Care" loading="lazy" /></a>
-      <div class="footer-links"><a href="#services">Services</a><a href="#about">About</a><a href="#locations">Locations</a><a href="https://wellviewcare.org/faq">FAQ</a><a href="https://wellviewcare.org/donate">Donate</a></div>
+      <div class="footer-links"><a href="#services">Services</a><a href="/appointment/">Book an appointment</a><a href="#locations">Locations</a><a href="#about">About</a><a href="https://wellviewcare.org/gallery">Gallery</a><a href="https://wellviewcare.org/blog">Blog</a><a href="https://wellviewcare.org/contact">Contact</a><a href="https://wellviewcare.org/faq">FAQ</a><a href="https://wellviewcare.org/donate">Donate</a></div>
       <p>© {new Date().getFullYear()} WellView Care. All rights reserved.</p>
     </footer>
   </body>
