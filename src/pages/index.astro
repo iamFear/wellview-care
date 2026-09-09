@@ -4,24 +4,24 @@ import '../styles/global.css';
 const services = [
   {
     number: '01',
-    title: 'HIV Prevention',
-    text: 'Access PrEP and PEP with a team that helps you reduce risk and make a clear plan for what comes next.',
+    title: 'Prevent HIV',
+    text: 'PrEP helps prevent HIV before exposure. PEP may help after a possible exposure and should be started within 72 hours.',
     image: '/assets/service-prevention.webp',
     alt: '',
     href: 'https://wellviewcare.org/services/prep',
   },
   {
     number: '02',
-    title: 'STI / STD Testing',
-    text: 'Confidential rapid tests and labs for HIV, HCV, chlamydia, gonorrhea, syphilis, and more—with expedited results.',
+    title: 'Get tested',
+    text: 'Private testing for HIV, hepatitis C, chlamydia, gonorrhea, syphilis, and other infections. Some results are ready in about 30 minutes.',
     image: '/assets/service-testing.webp',
     alt: '',
     href: 'https://wellviewcare.org/services/sti',
   },
   {
     number: '03',
-    title: 'STI / STD Treatment',
-    text: 'Personalized treatment plans, practical education, and compassionate support from testing through follow-up.',
+    title: 'Start treatment',
+    text: 'If a test is positive, we explain the result in plain language and build a treatment plan that fits your health and your life.',
     image: '/assets/service-treatment.webp',
     alt: '',
     href: 'https://wellviewcare.org/services/hiv',
@@ -42,7 +42,7 @@ const locations = [
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content="Confidential HIV, HCV, and STI testing, prevention, and treatment from WellView Care across Florida." />
-    <meta name="theme-color" content="#071b2f" />
+    <meta name="theme-color" content="#fff6e9" />
     <link rel="icon" href="/favicon.ico" sizes="any" />
     <title>WellView Care | Confidential Testing & Treatment in Florida</title>
   </head>
@@ -59,12 +59,12 @@ const locations = [
         <a href="#about">About</a>
         <a href="#locations">Locations</a>
       </nav>
-      <a class="button button-small" href="https://wellviewcare.org/appointment">Book an appointment</a>
+      <a class="button button-small" href="/appointment/">Book an appointment</a>
       <details class="mobile-menu">
         <summary aria-label="Open navigation"><span></span><span></span></summary>
         <nav aria-label="Mobile menu">
           <a href="#services">Services</a><a href="#process">Our process</a><a href="#about">About</a><a href="#locations">Locations</a>
-          <a href="https://wellviewcare.org/appointment">Book an appointment</a>
+          <a href="/appointment/">Book an appointment</a>
         </nav>
       </details>
     </header>
@@ -77,12 +77,12 @@ const locations = [
         <div class="hero-orbit orbit-one"></div>
         <div class="hero-orbit orbit-two"></div>
         <div class="hero-content">
-          <p class="eyebrow">Confidential care · Florida</p>
-          <h1 id="hero-title">CARE<br /><span>WITHOUT</span><br />JUDGMENT.</h1>
-          <p class="hero-copy">Fast, private HIV, HCV, and STI testing, prevention, and treatment—whether or not you have insurance.</p>
+          <p class="eyebrow">Private care · Clear answers</p>
+          <h1 id="hero-title">TESTING.<br /><span>TREATMENT.</span><br />SUPPORT.</h1>
+          <p class="hero-copy">Confidential HIV, hepatitis C, and STI care from people who listen. Insurance is not required.</p>
           <div class="hero-actions">
-            <a class="button" href="https://wellviewcare.org/appointment">Book an appointment <span aria-hidden="true">↗</span></a>
-            <a class="text-link" href="#services">Explore our care <span aria-hidden="true">↓</span></a>
+            <a class="button" href="/appointment/">Book an appointment <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="tel:+18665025545">Call 866-502-5545 <span aria-hidden="true">↗</span></a>
           </div>
         </div>
         <div class="hero-note" aria-hidden="true"><span>501(c)(3)</span> nonprofit care</div>
@@ -91,10 +91,10 @@ const locations = [
       <section class="intro section-pad" aria-labelledby="intro-title">
         <div class="section-label"><span>What we believe</span><span>01</span></div>
         <div class="intro-grid">
-          <h2 id="intro-title">Your health deserves clarity, privacy, and a team on your side.</h2>
+          <h2 id="intro-title">Not sure what you need? Start here.</h2>
           <div class="intro-copy">
-            <p>WellView Care makes quality sexual health care accessible across Florida. We pair confidential testing with clear answers and a treatment plan made for you.</p>
-            <a class="arrow-link" href="https://wellviewcare.org/about">Meet WellView Care <span aria-hidden="true">↗</span></a>
+            <p>Tell us what is happening. Our team will help you choose the right test, prevention option, or treatment—privately and without judgment.</p>
+            <a class="arrow-link" href="/appointment/">Choose a clinic and visit type <span aria-hidden="true">↗</span></a>
           </div>
         </div>
       </section>
@@ -102,8 +102,8 @@ const locations = [
       <section class="services section-pad" id="services" aria-labelledby="services-title">
         <div class="section-label light"><span>Holistic support</span><span>02</span></div>
         <div class="section-heading-row">
-          <h2 id="services-title">Care that meets<br />you where you are.</h2>
-          <p>From prevention to treatment, every service begins with a private conversation and a practical next step.</p>
+          <h2 id="services-title">Choose what<br />you need today.</h2>
+          <p>Each visit starts with a private conversation. We explain your options before any test or treatment.</p>
         </div>
         <div class="service-list">
           {services.map((service) => (
@@ -130,12 +130,12 @@ const locations = [
         <div class="treatment-copy">
           <p class="eyebrow dark">Personalized treatment</p>
           <h2 id="treatment-title">Tested.<br />Treated.<br /><span>Supported.</span></h2>
-          <p>Rapid testing can give you answers in as little as 30 minutes. If treatment is needed, our team builds a personal care plan and helps you understand every step.</p>
+          <p>Some rapid tests give results in about 30 minutes. If you need treatment, we explain the result, answer your questions, and stay with you through the next steps.</p>
           <div class="treatment-facts" aria-label="Treatment highlights">
-            <div><strong>30 min</strong><span>Rapid test results</span></div>
-            <div><strong>98%</strong><span>HCV cure rate with EPCLUSA®</span></div>
+            <div><strong>Private</strong><span>Your visit and results</span></div>
+            <div><strong>Simple</strong><span>Answers you can understand</span></div>
           </div>
-          <a class="button button-dark" href="https://wellviewcare.org/contact">Talk with our team</a>
+          <a class="button button-dark" href="/appointment/">Plan your visit</a>
         </div>
       </section>
 
@@ -147,9 +147,9 @@ const locations = [
             <h2 id="process-title">A clear path forward.</h2>
           </div>
           <ol class="steps">
-            <li><span>01</span><div><h3>Coverage check</h3><p>Insurance is not required. We start by confirming coverage and explaining your options.</p></div></li>
-            <li><span>02</span><div><h3>Financial support</h3><p>As a nonprofit, we help eligible patients apply for financial assistance.</p></div></li>
-            <li><span>03</span><div><h3>Tailored treatment</h3><p>After testing, you receive a personal plan, practical education, and ongoing support.</p></div></li>
+            <li><span>01</span><div><h3>Choose a clinic</h3><p>Select the WellView Care location that is easiest for you to visit.</p></div></li>
+            <li><span>02</span><div><h3>Tell us what you need</h3><p>Choose testing, prevention, treatment, or help deciding. Insurance is not required.</p></div></li>
+            <li><span>03</span><div><h3>Meet your care team</h3><p>We explain every step, answer your questions, and create a clear plan with you.</p></div></li>
           </ol>
         </div>
       </section>
@@ -158,14 +158,14 @@ const locations = [
         <div class="about-word" aria-hidden="true">WELL</div>
         <div class="about-inner">
           <p class="eyebrow">About WellView Care</p>
-          <h2 id="about-title">Quality care should be within everyone's reach.</h2>
+          <h2 id="about-title">Care you can understand. Support you can trust.</h2>
           <div class="about-columns">
-            <p>We serve communities across Florida with fast, accurate testing and compassionate treatment—regardless of insurance status.</p>
+            <p>WellView Care is a nonprofit clinic serving Florida communities with private testing, prevention, and treatment.</p>
             <ul>
-              <li>Confidential rapid tests and labs</li>
-              <li>Education and counseling with clear takeaways</li>
-              <li>Anonymous partner notifications</li>
-              <li>PrEP and PEP prevention options</li>
+              <li>Private rapid tests and laboratory testing</li>
+              <li>Clear explanations without medical jargon</li>
+              <li>Help notifying recent partners anonymously</li>
+              <li>PrEP and PEP to help prevent HIV</li>
             </ul>
           </div>
         </div>
@@ -194,7 +194,7 @@ const locations = [
         <p class="eyebrow">Take the next step</p>
         <h2 id="cta-title">Your care.<br />Your privacy.<br /><span>Your move.</span></h2>
         <div class="hero-actions centered">
-          <a class="button button-white" href="https://wellviewcare.org/appointment">Book an appointment <span aria-hidden="true">↗</span></a>
+          <a class="button button-white" href="/appointment/">Book an appointment <span aria-hidden="true">↗</span></a>
           <a class="text-link" href="https://wellviewcare.org/contact">Contact us</a>
         </div>
       </section>

@@ -1,0 +1,133 @@
+---
+import '../styles/global.css';
+
+const locations = [
+  { city: 'Fort Lauderdale', address: '906 W Sunrise Blvd Suite A', phone: '844-650-2626', tel: '+18446502626' },
+  { city: 'Fort Pierce', address: '2708 S US Hwy 1', phone: '772-310-4250', tel: '+17723104250' },
+  { city: 'Jacksonville', address: '1128 N Laura St', phone: '904-867-7968', tel: '+19048677968' },
+  { city: 'Riviera Beach', address: '3514 Broadway', phone: '561-821-4345', tel: '+15618214345' },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Plan and book a confidential appointment at a WellView Care clinic in Florida." />
+    <meta name="theme-color" content="#fff6e9" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <title>Book an Appointment | WellView Care</title>
+  </head>
+  <body class="appointment-page">
+    <a class="skip-link" href="#main">Skip to appointment planner</a>
+
+    <header class="site-header appointment-header" aria-label="Primary navigation">
+      <a class="brand" href="/" aria-label="WellView Care home">
+        <img src="/assets/wellview-logo.webp" width="154" height="57" alt="WellView Care" />
+      </a>
+      <nav class="desktop-nav" aria-label="Main menu">
+        <a href="/#services">Services</a>
+        <a href="/#process">Our process</a>
+        <a href="/#about">About</a>
+        <a href="/#locations">Locations</a>
+      </nav>
+      <a class="button button-small" href="tel:+18665025545">Call 866-502-5545</a>
+      <details class="mobile-menu">
+        <summary aria-label="Open navigation"><span></span><span></span></summary>
+        <nav aria-label="Mobile menu">
+          <a href="/">Home</a><a href="/#services">Services</a><a href="/#locations">Locations</a><a href="tel:+18665025545">Call us</a>
+        </nav>
+      </details>
+    </header>
+
+    <main id="main">
+      <section class="appointment-hero" aria-labelledby="appointment-title">
+        <div class="appointment-intro">
+          <p class="eyebrow dark">Confidential appointment</p>
+          <h1 id="appointment-title">Let's find the right visit for you.</h1>
+          <p>Choose a clinic and tell us what kind of help you need. You will then continue to WellView Care's secure scheduler to select a date and time.</p>
+          <div class="privacy-note">
+            <span aria-hidden="true">✓</span>
+            <p><strong>Private and judgment-free.</strong><br />Insurance is not required to make an appointment.</p>
+          </div>
+        </div>
+
+        <form class="appointment-card" id="visit-planner">
+          <div class="form-step">
+            <span>01</span>
+            <div><strong>Plan your visit</strong><small>About 1 minute</small></div>
+          </div>
+
+          <label for="clinic">Which clinic works best for you?</label>
+          <select id="clinic" name="clinic" required>
+            <option value="">Choose a location</option>
+            {locations.map((location) => <option value={location.city}>{location.city}</option>)}
+          </select>
+
+          <label for="visit-type">What can we help with?</label>
+          <select id="visit-type" name="visit-type" required>
+            <option value="">Choose a visit type</option>
+            <option>HIV, hepatitis C, or STI testing</option>
+            <option>PrEP for HIV prevention</option>
+            <option>PEP after a possible HIV exposure</option>
+            <option>HIV, hepatitis C, or STI treatment</option>
+            <option>I am not sure—I need guidance</option>
+          </select>
+
+          <fieldset>
+            <legend>Have you visited WellView Care before?</legend>
+            <label class="radio-card"><input type="radio" name="patient" value="new" required /><span>New patient</span></label>
+            <label class="radio-card"><input type="radio" name="patient" value="returning" /><span>Returning patient</span></label>
+          </fieldset>
+
+          <button class="button form-button" type="submit">Continue to date & time <span aria-hidden="true">→</span></button>
+          <p class="form-help">This page does not save personal or medical information.</p>
+          <noscript><p class="form-help">JavaScript is required for this planner. You can <a href="https://wellviewcare.org/appointment">open the secure scheduler directly</a>.</p></noscript>
+        </form>
+      </section>
+
+      <section class="urgent-strip" aria-labelledby="pep-title">
+        <div><span aria-hidden="true">!</span><h2 id="pep-title">Possible HIV exposure in the last 72 hours?</h2></div>
+        <p>PEP works best when started as soon as possible. Call WellView Care now so our team can guide you.</p>
+        <a href="tel:+18665025545">Call 866-502-5545 <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <section class="appointment-expect section-pad" aria-labelledby="expect-title">
+        <div class="section-label"><span>Your appointment</span><span>02</span></div>
+        <div class="expect-grid">
+          <div><p class="eyebrow dark">What happens next</p><h2 id="expect-title">Three simple steps.</h2></div>
+          <ol class="steps">
+            <li><span>01</span><div><h3>Pick a time</h3><p>Choose an available date and time in the secure scheduler.</p></div></li>
+            <li><span>02</span><div><h3>Share your details</h3><p>Enter the information the clinic needs to prepare for your visit.</p></div></li>
+            <li><span>03</span><div><h3>Get confirmation</h3><p>WellView Care confirms your appointment and sends any instructions you need.</p></div></li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="clinic-picker section-pad" aria-labelledby="clinic-title">
+        <div class="section-label light"><span>Four Florida clinics</span><span>03</span></div>
+        <div class="clinic-picker-heading"><h2 id="clinic-title">Prefer to call?</h2><p>Reach the clinic directly. A team member can help you choose the right appointment.</p></div>
+        <div class="clinic-call-grid">
+          {locations.map((location) => (
+            <article><span>{location.city}</span><p>{location.address}</p><a href={`tel:${location.tel}`}>{location.phone} <span aria-hidden="true">↗</span></a></article>
+          ))}
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="/"><img src="/assets/wellview-logo.webp" width="154" height="57" alt="WellView Care" loading="lazy" /></a>
+      <div class="footer-links"><a href="/#services">Services</a><a href="/#about">About</a><a href="/#locations">Locations</a><a href="https://wellviewcare.org/faq">FAQ</a><a href="https://wellviewcare.org/donate">Donate</a></div>
+      <p>© {new Date().getFullYear()} WellView Care. All rights reserved.</p>
+    </footer>
+
+    <script>
+      const planner = document.querySelector<HTMLFormElement>('#visit-planner');
+      planner?.addEventListener('submit', (event) => {
+        event.preventDefault();
+        if (planner.reportValidity()) window.location.assign('https://wellviewcare.org/appointment');
+      });
+    </script>
+  </body>
+</html>
