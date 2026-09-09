@@ -58,6 +58,8 @@ const locations = [
             <span>01</span>
             <div><strong>Plan your visit</strong><small>About 1 minute</small></div>
           </div>
+          <div class="form-meter" data-form-meter role="progressbar" aria-label="Appointment planner progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span></span></div>
+          <p class="form-live-summary" data-form-summary aria-live="polite">Choose your clinic to begin.</p>
 
           <label for="clinic">Which clinic works best for you?</label>
           <select id="clinic" name="clinic" required>
@@ -122,12 +124,6 @@ const locations = [
       <p>© {new Date().getFullYear()} WellView Care. All rights reserved.</p>
     </footer>
 
-    <script>
-      const planner = document.querySelector<HTMLFormElement>('#visit-planner');
-      planner?.addEventListener('submit', (event) => {
-        event.preventDefault();
-        if (planner.reportValidity()) window.location.assign('https://wellviewcare.org/appointment');
-      });
-    </script>
+    <script src="../scripts/interactions.ts"></script>
   </body>
 </html>

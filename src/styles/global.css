@@ -644,3 +644,136 @@ footer > a { padding: .45rem .65rem; background: #fff; }
 @media (prefers-reduced-motion: reduce) {
   .cta-mark { animation: none; }
 }
+
+/* Lightweight interaction layer: motion only enhances already-visible content. */
+.reading-progress {
+  position: absolute;
+  inset: auto 0 0;
+  height: 3px;
+  overflow: hidden;
+  background: rgba(255,255,255,.08);
+  pointer-events: none;
+}
+.reading-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  will-change: transform;
+}
+.site-header { transition: min-height .3s ease, background .3s ease, box-shadow .3s ease; }
+.site-header.is-scrolled { min-height: 4.7rem; background: rgba(3,13,18,.95); box-shadow: 0 .8rem 2.8rem rgba(0,0,0,.2); }
+.desktop-nav a { position: relative; }
+.desktop-nav a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 100%;
+  bottom: -.65rem;
+  height: 2px;
+  background: var(--cyan);
+  transition: right .25s ease;
+}
+.desktop-nav a:hover::after, .desktop-nav a.is-active::after { right: 0; }
+
+.has-interactions .reveal-item {
+  opacity: 0;
+  transform: translateY(2.5rem);
+  filter: blur(5px);
+  transition:
+    opacity .75s cubic-bezier(.2,.75,.25,1),
+    transform .75s cubic-bezier(.2,.75,.25,1),
+    filter .75s ease;
+  transition-delay: calc(var(--reveal-order, 0) * 70ms);
+}
+.has-interactions .reveal-item.is-visible { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+.hero::before, .appointment-hero::after, .final-cta::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(520px circle at var(--pointer-x, 70%) var(--pointer-y, 35%), rgba(111,231,242,.13), transparent 62%);
+  pointer-events: none;
+}
+.hero::before { z-index: -1; }
+.appointment-hero > *, .final-cta > * { position: relative; z-index: 1; }
+.interactive-card { isolation: isolate; }
+.interactive-card::before {
+  background: radial-gradient(360px circle at var(--card-x, 50%) var(--card-y, 50%), rgba(111,231,242,.17), transparent 65%);
+  opacity: 0;
+  transition: opacity .25s ease;
+}
+.interactive-card:hover::before { opacity: 1; }
+.guide-card.interactive-card::before, .location-card.interactive-card::before, .clinic-call-grid article.interactive-card::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+.location-card.interactive-card, .clinic-call-grid article.interactive-card { position: relative; overflow: hidden; }
+
+.hero-media img, .treatment-visual img { transition: transform .8s cubic-bezier(.2,.75,.25,1), filter .5s ease; }
+.hero-media:hover img { transform: scale(1.035); filter: grayscale(0) contrast(1.05) saturate(1); }
+.treatment-visual:hover img { transform: scale(1.045); filter: grayscale(.05) contrast(1.05); }
+.hero-orbit { animation: orbit-breathe 8s ease-in-out infinite alternate; }
+.orbit-two { animation-delay: -3s; animation-duration: 11s; }
+.trust-strip span { animation: signal-pulse 2.6s ease-in-out infinite; }
+.trust-strip div:nth-child(2) span { animation-delay: .4s; }
+.trust-strip div:nth-child(3) span { animation-delay: .8s; }
+.trust-strip div:nth-child(4) span { animation-delay: 1.2s; }
+.button span, .text-link span, .service-card > a span { transition: transform .25s ease; }
+.button:hover span, .text-link:hover span, .service-card:hover > a span { transform: translate(.2rem, -.2rem); }
+
+.form-meter {
+  height: .35rem;
+  margin: -1.2rem 0 .45rem;
+  overflow: hidden;
+  background: #dce7eb;
+}
+.form-meter span {
+  display: block;
+  width: var(--form-progress, 0%);
+  height: 100%;
+  background: linear-gradient(90deg, var(--blue), var(--cyan));
+  transition: width .4s cubic-bezier(.2,.75,.25,1);
+}
+.form-live-summary { margin: 0 0 1.2rem; color: #526a74; font-size: .78rem; font-weight: 700; }
+.appointment-card select, .radio-card { transition: border-color .2s ease, background .2s ease, transform .2s ease, box-shadow .2s ease; }
+.appointment-card select:hover { border-color: var(--blue); background: #fff; }
+.appointment-card select:focus-visible { box-shadow: 0 0 0 4px rgba(35,103,255,.14); }
+.radio-card:hover { transform: translateY(-2px); border-color: var(--blue); }
+.form-button { position: relative; overflow: hidden; }
+.form-button::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  transform: translateX(-110%) skewX(-18deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.3), transparent);
+  transition: transform .7s ease;
+}
+.form-button.is-ready::before { transform: translateX(110%) skewX(-18deg); }
+.button-arrow-ready { transform: translateX(.3rem); }
+
+@keyframes orbit-breathe {
+  from { transform: scale(.94) rotate(-3deg); opacity: .45; }
+  to { transform: scale(1.05) rotate(3deg); opacity: 1; }
+}
+@keyframes signal-pulse {
+  0%, 100% { transform: scale(.7); opacity: .65; }
+  50% { transform: scale(1.25); opacity: 1; }
+}
+
+@media (max-width: 640px) {
+  .reading-progress { height: 2px; }
+  .has-interactions .reveal-item { transform: translateY(1.5rem); filter: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .has-interactions .reveal-item { opacity: 1; transform: none; filter: none; transition: none; }
+  .hero-orbit, .trust-strip span { animation: none; }
+  .hero-media img, .treatment-visual img, .form-meter span { transition: none; }
+}
