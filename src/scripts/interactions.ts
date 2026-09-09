@@ -3,6 +3,44 @@ const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matc
 
 document.documentElement.classList.add('has-interactions');
 
+const splitAnimatedText = (element: HTMLElement, mode: 'words' | 'chars') => {
+  if (element.dataset.animatedText) return;
+  element.dataset.animatedText = mode;
+  let order = 0;
+
+  const visit = (node: Node) => {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const value = node.textContent ?? '';
+      const parts = mode === 'chars' ? [...value] : value.split(/(\s+)/);
+      const fragment = document.createDocumentFragment();
+      parts.forEach((part) => {
+        if (!part || /^\s+$/.test(part)) {
+          fragment.append(document.createTextNode(part));
+          return;
+        }
+        const clip = document.createElement('span');
+        const content = document.createElement('span');
+        clip.className = mode === 'chars' ? 'text-clip char-clip' : 'text-clip word-clip';
+        content.className = mode === 'chars' ? 'animated-char' : 'animated-word';
+        content.style.setProperty('--text-order', String(order++));
+        content.textContent = part;
+        clip.append(content);
+        fragment.append(clip);
+      });
+      node.parentNode?.replaceChild(fragment, node);
+      return;
+    }
+    [...node.childNodes].forEach(visit);
+  };
+
+  [...element.childNodes].forEach(visit);
+};
+
+document.querySelectorAll<HTMLElement>('.hero h1').forEach((title) => splitAnimatedText(title, 'chars'));
+document.querySelectorAll<HTMLElement>(
+  '.intro h2, .section-heading-row h2, .treatment-copy h2, .guide-heading h2, .process h2, .about h2, .final-cta h2, .appointment-intro h1, .expect-grid h2, .clinic-picker h2'
+).forEach((title) => splitAnimatedText(title, 'words'));
+
 const header = document.querySelector<HTMLElement>('.site-header');
 if (header) {
   const progress = document.createElement('div');
@@ -30,7 +68,7 @@ if (header) {
 }
 
 const revealTargets = document.querySelectorAll<HTMLElement>(
-  '.section-label, .intro-grid, .section-heading-row, .service-card, .treatments > *, .guide-heading, .guide-card, .process-grid > *, .about-inner > *, .location-card, .final-cta > *, .appointment-intro > *, .appointment-card, .urgent-strip > *, .expect-grid > *, .clinic-picker-heading > *, .clinic-call-grid article, footer > *'
+  '.hero h1, .section-label, .intro-grid, .section-heading-row, .service-card, .treatments > *, .guide-heading, .guide-card, .process-grid > *, .about-inner > *, .location-card, .final-cta > *, .appointment-intro > *, .appointment-card, .urgent-strip > *, .expect-grid > *, .clinic-picker-heading > *, .clinic-call-grid article, footer > *'
 );
 
 if (!reduceMotion && 'IntersectionObserver' in window) {

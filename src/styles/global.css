@@ -777,3 +777,46 @@ footer > a { padding: .45rem .65rem; background: #fff; }
   .hero-orbit, .trust-strip span { animation: none; }
   .hero-media img, .treatment-visual img, .form-meter span { transition: none; }
 }
+
+/* Miranet-inspired kinetic type: clipped characters in the hero, clipped words elsewhere. */
+.text-clip {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: bottom;
+  padding: .08em .025em .1em;
+  margin: -.08em -.025em -.1em;
+}
+.animated-char, .animated-word {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(112%) rotate(2deg);
+  transition:
+    transform .85s cubic-bezier(.16,1,.3,1),
+    opacity .45s ease;
+  will-change: transform;
+}
+.animated-char { transition-delay: calc(80ms + var(--text-order) * 18ms); }
+.animated-word { transition-delay: calc(70ms + var(--text-order) * 65ms); }
+.is-visible .animated-char, .is-visible .animated-word,
+.reveal-item.is-visible .animated-char, .reveal-item.is-visible .animated-word {
+  opacity: 1;
+  transform: translateY(0) rotate(0);
+}
+.hero h1 .char-clip:nth-of-type(3n) .animated-char { transition-duration: 1s; }
+
+@media (max-width: 640px) {
+  .hero-content { width: calc(100% - 3rem); }
+  .hero h1 {
+    max-width: 100%;
+    font-size: clamp(3.15rem, 15.2vw, 4.1rem);
+    letter-spacing: -.082em;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animated-char, .animated-word {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
